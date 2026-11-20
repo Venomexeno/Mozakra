@@ -1,0 +1,29 @@
+<UserControl x:Class="Mozakra.App.Views.NoteWarningsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:Mozakra.App.Views">
+    <ItemsControl ItemsSource="{Binding Warnings}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Border Background="{StaticResource WarningSoft}" BorderBrush="{StaticResource WarningBorder}" BorderThickness="1"
+                        CornerRadius="12" Padding="12,9" Margin="0,4">
+                    <StackPanel>
+                        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding Message}" TextWrapping="Wrap" Margin="0,2,0,4" />
+                        <WrapPanel>
+                            <Button Content="{Binding ExtendText}"
+                                    Visibility="{Binding CanExtend, Converter={x:Static v:NoteVisibilityConverter.Instance}}"
+                                    Command="{Binding DataContext.ExtendDeadlineCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    CommandParameter="{Binding}" />
+                            <Button Content="{DynamicResource Note.Warning.AddFreeTime}"
+                                    Command="{Binding DataContext.AddFreeTimeCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+                            <Button Content="{DynamicResource Note.Warning.Leave}"
+                                    Command="{Binding DataContext.LeaveWarningCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    CommandParameter="{Binding}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

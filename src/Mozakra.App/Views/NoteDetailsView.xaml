@@ -1,0 +1,73 @@
+<UserControl x:Class="Mozakra.App.Views.NoteDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:Mozakra.App.Views">
+    <StackPanel>
+        <Separator Margin="0,10" />
+        <TextBlock Text="{Binding WeekTitle}" FontWeight="SemiBold" />
+        <TextBlock Text="{DynamicResource Note.Week.Hint}" Style="{StaticResource Small}" />
+        <ItemsControl ItemsSource="{Binding Week}" Margin="0,6,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="7" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding DataContext.EditDayCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                            CommandParameter="{Binding}" ToolTip="{Binding Tooltip}" Cursor="Hand" Margin="2,0">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <StackPanel Background="Transparent">
+                                    <TextBlock Text="{Binding ValueText}" FontSize="10" HorizontalAlignment="Center"
+                                               Foreground="{StaticResource Muted}" />
+                                    <Grid Height="56" Width="18">
+                                        <Border VerticalAlignment="Bottom" Height="{Binding CapacityHeight}"
+                                                Background="{StaticResource Track}" CornerRadius="5" />
+                                        <Border x:Name="Bar" VerticalAlignment="Bottom" Height="{Binding LoggedHeight}"
+                                                Background="{StaticResource Accent}" CornerRadius="5" />
+                                    </Grid>
+                                    <TextBlock x:Name="DayLabel" Text="{Binding Label}" FontSize="11" HorizontalAlignment="Center" />
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding GoalMet}" Value="True">
+                                        <Setter TargetName="Bar" Property="Background" Value="{StaticResource Success}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsToday}" Value="True">
+                                        <Setter TargetName="DayLabel" Property="FontWeight" Value="Bold" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsFuture}" Value="True">
+                                        <Setter TargetName="DayLabel" Property="Foreground" Value="{StaticResource Muted}" />
+                                    </DataTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Separator Margin="0,10" />
+        <TextBlock Text="{DynamicResource Note.StatusTitle}" FontWeight="SemiBold" />
+        <ItemsControl ItemsSource="{Binding Statuses}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,4,0,2">
+                        <DockPanel>
+                            <TextBlock DockPanel.Dock="Right" Text="{Binding HealthIcon}" Margin="6,0,0,0" />
+                            <Ellipse Width="9" Height="9" Fill="{Binding ColorHex}" Stroke="#40000000" StrokeThickness="1"
+                                     Margin="0,0,6,0" VerticalAlignment="Center" />
+                            <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Name}" />
+                        </DockPanel>
+                        <ProgressBar Value="{Binding ProgressPercent, Mode=OneWay}" Foreground="{StaticResource Success}" Height="6" />
+                        <TextBlock Text="{Binding ProgressText}" Style="{StaticResource Small}" />
+                        <TextBlock Text="{Binding ForecastText}" Style="{StaticResource Small}"
+                                   Visibility="{Binding ForecastText, Converter={x:Static v:NoteVisibilityConverter.Instance}}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <TextBlock Text="{Binding MoreWaitingText}" Style="{StaticResource Small}" Margin="0,4,0,0"
+                   Visibility="{Binding MoreWaitingText, Converter={x:Static v:NoteVisibilityConverter.Instance}}" />
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,113 @@
+<Window x:Class="Mozakra.App.Views.PlansWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Mozakra.App.ViewModels"
+        Title="{DynamicResource Screens.Plans.Title}"
+        Icon="pack://application:,,,/Mozakra;component/Assets/mozakra.ico"
+        Width="760" Height="560" MinWidth="600" MinHeight="380"
+        Background="{StaticResource Paper}"
+        FlowDirection="{DynamicResource AppFlowDirection}"
+        FontFamily="{StaticResource AppFont}">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <!-- One plan row (color, name, kind · deadline, health + progress). -->
+        <DataTemplate x:Key="PlanRowContent" DataType="{x:Type vm:PlansItemViewModel}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Border Width="8" CornerRadius="4" Background="{Binding ColorBrush}" Margin="0,0,12,0"
+                        BorderBrush="{StaticResource SoftBorder}" BorderThickness="1" />
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="14" TextTrimming="CharacterEllipsis" />
+                    <TextBlock Style="{StaticResource Small}">
+                        <Run Text="{Binding KindText, Mode=OneWay}" />
+                        <Run Text=" · " />
+                        <Run Text="{Binding DeadlineText, Mode=OneWay}" />
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10,0">
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" Text="{Binding ProgressText}" Style="{StaticResource Small}" />
+                        <TextBlock Text="{Binding HealthText}" Foreground="{Binding HealthBrush}" FontWeight="SemiBold"
+                                   FontSize="{StaticResource FontSizeSmall}" />
+                    </DockPanel>
+                    <ProgressBar Value="{Binding Progress, Mode=OneWay}" Foreground="{Binding HealthBrush}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="RowCard" TargetType="Border" BasedOn="{StaticResource Card}">
+            <Setter Property="Margin" Value="2,0,2,8" />
+        </Style>
+    </Window.Resources>
+
+    <DockPanel Margin="16">
+        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,12">
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <Button Content="{DynamicResource Screens.Plans.FreeTime}" Command="{Binding OpenFreeTimeCommand}" />
+                <Button Content="{DynamicResource Screens.Plans.Settings}" Command="{Binding OpenSettingsCommand}" />
+                <Button Content="{DynamicResource Screens.Plans.Add}" Command="{Binding AddCommand}"
+                        Style="{StaticResource AccentButton}" />
+            </StackPanel>
+            <TextBlock Text="{DynamicResource Screens.Plans.Title}" Style="{StaticResource Title}" VerticalAlignment="Center" />
+        </DockPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="{DynamicResource Screens.Plans.Empty}" Style="{StaticResource Small}" Margin="0,8"
+                           Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVisibility}}" />
+                <ItemsControl ItemsSource="{Binding Active}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:PlansItemViewModel}">
+                            <Border Style="{StaticResource RowCard}">
+                                <DockPanel>
+                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Button Content="{DynamicResource Common.Edit}"
+                                                Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="{DynamicResource Screens.Plans.Archive}"
+                                                Command="{Binding DataContext.ArchiveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="{DynamicResource Common.Delete}" Foreground="{StaticResource Accent}"
+                                                Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" />
+                                    </StackPanel>
+                                    <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource PlanRowContent}" />
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Expander Margin="0,12,0,0" Visibility="{Binding HasArchived, Converter={StaticResource BoolToVisibility}}">
+                    <Expander.Header>
+                        <TextBlock Text="{DynamicResource Screens.Plans.ArchivedSection}" FontWeight="SemiBold" />
+                    </Expander.Header>
+                    <ItemsControl ItemsSource="{Binding Archived}" Margin="0,8,0,0" Opacity="0.85">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type vm:PlansItemViewModel}">
+                                <Border Style="{StaticResource RowCard}">
+                                    <DockPanel>
+                                        <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Button Content="{DynamicResource Screens.Plans.Unarchive}"
+                                                    Command="{Binding DataContext.UnarchiveCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                    CommandParameter="{Binding}" />
+                                            <Button Content="{DynamicResource Common.Delete}" Foreground="{StaticResource Accent}"
+                                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                    CommandParameter="{Binding}" />
+                                        </StackPanel>
+                                        <ContentPresenter Content="{Binding}" ContentTemplate="{StaticResource PlanRowContent}" />
+                                    </DockPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

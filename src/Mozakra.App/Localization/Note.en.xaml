@@ -1,0 +1,140 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <!-- The note (Plan 05). Keys must match Note.ar.xaml. {0}, {1} = values filled in by code. -->
+
+    <!-- Header -->
+    <sys:String x:Key="Note.DateFormat">dddd, d MMMM</sys:String>
+    <sys:String x:Key="Note.ShortDateFormat">d MMM</sys:String>
+    <sys:String x:Key="Note.LongDateFormat">dddd d MMM</sys:String>
+    <x:Array x:Key="Note.Nudges" Type="sys:String">
+        <sys:String>Small steps every day beat one big push 💪</sys:String>
+        <sys:String>Future you is cheering for you right now 🙌</sys:String>
+        <sys:String>Just start. 10 minutes is enough to get going ▶</sys:String>
+        <sys:String>One more video and you're closer than yesterday 🎬</sys:String>
+        <sys:String>Consistency is a superpower 🔥</sys:String>
+        <sys:String>The plan works if you work the plan 🎯</sys:String>
+        <sys:String>Phone away, focus for a bit, let's go 📵</sys:String>
+        <sys:String>You don't have to be great to start, but you have to start ✨</sys:String>
+        <sys:String>Learn it today, use it tomorrow 🚀</sys:String>
+        <sys:String>A little every day adds up to a lot 📈</sys:String>
+    </x:Array>
+    <!-- Sunday..Saturday -->
+    <x:Array x:Key="Note.WeekDays" Type="sys:String">
+        <sys:String>Sun</sys:String>
+        <sys:String>Mon</sys:String>
+        <sys:String>Tue</sys:String>
+        <sys:String>Wed</sys:String>
+        <sys:String>Thu</sys:String>
+        <sys:String>Fri</sys:String>
+        <sys:String>Sat</sys:String>
+    </x:Array>
+
+    <!-- Agenda -->
+    <sys:String x:Key="Note.TodaySummary">Today: {0} / {1}</sys:String>
+    <sys:String x:Key="Note.TodayLogged">Logged today: {0}</sys:String>
+    <sys:String x:Key="Note.Bonus">Bonus</sys:String>
+    <sys:String x:Key="Note.NoPlans">No plans yet. Add a course or a project and Mozakra will split your free time for you.</sys:String>
+    <sys:String x:Key="Note.AddFirstPlan">➕ Add your first plan</sys:String>
+    <sys:String x:Key="Note.RestDay">Rest day 😴 (studying still counts as a bonus)</sys:String>
+    <sys:String x:Key="Note.GoalReached">Done for today 🎉</sys:String>
+    <sys:String x:Key="Note.AllComplete">All your plans are complete 🎓 Add a new one when you're ready.</sys:String>
+    <sys:String x:Key="Note.Health.OnTrack">On track</sys:String>
+    <sys:String x:Key="Note.Health.AtRisk">At risk: needs almost all your free time</sys:String>
+    <sys:String x:Key="Note.Health.Impossible">Not enough time before the deadline</sys:String>
+    <sys:String x:Key="Note.Health.Overdue">The deadline has passed</sys:String>
+    <sys:String x:Key="Note.Health.Completed">Completed</sys:String>
+    <sys:String x:Key="Note.Health.Waiting">Waiting for another plan</sys:String>
+    <sys:String x:Key="Note.Health.NoDeadline">No deadline</sys:String>
+
+
+    <!-- Footer buttons -->
+    <sys:String x:Key="Note.UndoButton">↩ Undo</sys:String>
+    <sys:String x:Key="Note.UndoTooltip">Undo: {0} (Ctrl+Z)</sys:String>
+    <sys:String x:Key="Note.DetailsButton">📊 Details</sys:String>
+    <sys:String x:Key="Note.StreakFormat">🔥 {0}-day streak</sys:String>
+    <sys:String x:Key="Note.StreakNone">🔥 Start a streak today</sys:String>
+    <sys:String x:Key="Note.NavPlans">📋 Plans</sys:String>
+    <sys:String x:Key="Note.NavFreeTime">🕒 Free time</sys:String>
+    <sys:String x:Key="Note.NavSettings">⚙ Settings</sys:String>
+
+    <!-- Manual log -->
+    <sys:String x:Key="Note.ManualLogTitle">✍ Log your study</sys:String>
+    <sys:String x:Key="Note.LogPlan">Plan</sys:String>
+    <sys:String x:Key="Note.LogDate">Day</sys:String>
+    <sys:String x:Key="Note.Quick15">+15</sys:String>
+    <sys:String x:Key="Note.Quick30">+30</sys:String>
+    <sys:String x:Key="Note.Quick45">+45</sys:String>
+    <sys:String x:Key="Note.Quick60">+60</sys:String>
+    <sys:String x:Key="Note.MinutesHint">Minutes you studied</sys:String>
+    <sys:String x:Key="Note.QuickHint">Adds these minutes to the box</sys:String>
+    <sys:String x:Key="Note.SubtractMinutes">➖ Remove</sys:String>
+    <sys:String x:Key="Note.MinutesLabel">⏱ Time</sys:String>
+    <sys:String x:Key="Note.MinutesUnit">min</sys:String>
+    <sys:String x:Key="Note.VideosHint">Videos you finished</sys:String>
+    <sys:String x:Key="Note.VideosUnit">videos</sys:String>
+    <sys:String x:Key="Note.AddLog">✓ Log</sys:String>
+    <sys:String x:Key="Note.VideosProgress">{0}/{1} videos</sys:String>
+    <sys:String x:Key="Note.QuickVideosHint">Adds to the number of videos in the box</sys:String>
+    <sys:String x:Key="Note.SubtractHint">Removes from that day: videos for a course, minutes for work</sys:String>
+    <sys:String x:Key="Note.VideosLabel">🎬 Finished</sys:String>
+
+    <!-- Warnings -->
+    <sys:String x:Key="Note.Warning.Impossible">Needs {0}, you have {1} before {2}.</sys:String>
+    <sys:String x:Key="Note.Warning.Overdue">The deadline was {0} and {1} is still left.</sys:String>
+    <sys:String x:Key="Note.Warning.Extend">📅 Extend to {0}</sys:String>
+    <sys:String x:Key="Note.Warning.AddFreeTime">🕒 Add free time</sys:String>
+    <sys:String x:Key="Note.Warning.Leave">Leave it</sys:String>
+
+    <!-- Details -->
+    <sys:String x:Key="Note.Week.Title">📅 This week: {0} / {1}</sys:String>
+    <sys:String x:Key="Note.Week.Hint">Click a day to edit its minutes</sys:String>
+    <sys:String x:Key="Note.Week.DayTooltip">{0}: {1} of {2}</sys:String>
+    <sys:String x:Key="Note.StatusTitle">📈 Plans</sys:String>
+    <sys:String x:Key="Note.Status.Videos">{0}/{1} videos</sys:String>
+    <sys:String x:Key="Note.Status.Left">{0} left</sys:String>
+    <sys:String x:Key="Note.Status.Completed">Completed 🎓</sys:String>
+    <sys:String x:Key="Note.Status.Waiting">Starts after {0}</sys:String>
+    <sys:String x:Key="Note.Status.MoreWaiting">⏳ {0} more plans waiting after these (all in Plans)</sys:String>
+    <sys:String x:Key="Note.Status.ForecastDeadline">Finishes ≈ {0} · deadline {1}</sys:String>
+    <sys:String x:Key="Note.Status.Forecast">Finishes ≈ {0}</sys:String>
+    <sys:String x:Key="Note.Status.Deadline">Deadline {0}</sys:String>
+    <sys:String x:Key="Note.EditDay.Title">✏ {0}: minutes per plan</sys:String>
+    <sys:String x:Key="Note.EditDay.Hint">The total studied on this day for each plan.</sys:String>
+    <sys:String x:Key="Note.EditDay.Invalid">Type whole minutes (0 or more) in every box.</sys:String>
+
+    <!-- Toasts -->
+    <sys:String x:Key="Note.Toast.Added">+{0} 💪</sys:String>
+    <sys:String x:Key="Note.Toast.Removed">−{0} removed</sys:String>
+    <sys:String x:Key="Note.Toast.Videos">{0} videos 🎬</sys:String>
+    <sys:String x:Key="Note.Toast.Tomorrow">Tomorrow is now {0} instead of {1}</sys:String>
+    <sys:String x:Key="Note.Toast.Ahead">You're ahead by {0} today 🔥</sys:String>
+    <sys:String x:Key="Note.Toast.GoalDone">Today's goal is done 🎉</sys:String>
+    <sys:String x:Key="Note.Toast.Left">{0} left for today</sys:String>
+    <sys:String x:Key="Note.Toast.Bonus">Bonus time, it all counts 🌟</sys:String>
+    <sys:String x:Key="Note.Toast.CourseDone">🎉 You finished {0}!</sys:String>
+    <sys:String x:Key="Note.Toast.VideosRange">Videos: from 0 to {0}</sys:String>
+    <sys:String x:Key="Note.Toast.OldTimer">You had {0} on the old timer; it is in the box now. Press Log to count it.</sys:String>
+    <sys:String x:Key="Note.Toast.EnterVideos">Enter how many videos you finished first</sys:String>
+    <sys:String x:Key="Note.Toast.NothingToUndo">Nothing to undo</sys:String>
+    <sys:String x:Key="Note.Toast.Undone">↩ Undid: {0}</sys:String>
+    <sys:String x:Key="Note.Toast.NothingToSubtract">No minutes logged for this plan on that day</sys:String>
+    <sys:String x:Key="Note.Toast.EnterMinutes">Type the minutes first</sys:String>
+    <sys:String x:Key="Note.Toast.PickPlan">Pick a plan first</sys:String>
+    <sys:String x:Key="Note.Toast.FutureDay">That day hasn't come yet 🙂</sys:String>
+    <sys:String x:Key="Note.Toast.AllVideosDone">All videos are already done 🎓</sys:String>
+    <sys:String x:Key="Note.Toast.Extended">📅 {0}: new deadline {1}</sys:String>
+    <sys:String x:Key="Note.Toast.DayEdited">✏ {0} is now {1}</sys:String>
+
+    <!-- Undo labels ("Undo: …") -->
+    <sys:String x:Key="Note.Undo.Add">logging {0}</sys:String>
+    <sys:String x:Key="Note.Undo.Subtract">removing {0}</sys:String>
+    <sys:String x:Key="Note.Undo.Videos">{0} video</sys:String>
+    <sys:String x:Key="Note.Undo.Extend">extending {0}</sys:String>
+    <sys:String x:Key="Note.Undo.EditDay">editing {0}</sys:String>
+
+    <!-- Exit (tray) -->
+    <sys:String x:Key="Note.Exit.Remaining">Sure? You still have {0} today 😅</sys:String>
+    <sys:String x:Key="Note.Exit.Done">You're done for today 🎉 Exit Mozakra?</sys:String>
+    <sys:String x:Key="Note.Exit.Plain">Exit Mozakra?</sys:String>
+</ResourceDictionary>

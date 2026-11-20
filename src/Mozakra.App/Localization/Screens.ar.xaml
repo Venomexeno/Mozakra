@@ -1,0 +1,147 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <!-- Plans, plan editor, free time, settings, onboarding (Plan 06). Keys must match Screens.en.xaml. -->
+
+    <!-- Kind -->
+    <sys:String x:Key="Screens.Kind.Course">كورس</sys:String>
+    <sys:String x:Key="Screens.Kind.Work">شغل / مشروع</sys:String>
+
+    <!-- Health -->
+    <sys:String x:Key="Screens.Health.OnTrack">ماشي تمام</sys:String>
+    <sys:String x:Key="Screens.Health.AtRisk">على الحافة</sys:String>
+    <sys:String x:Key="Screens.Health.Impossible">مش هيلحق</sys:String>
+    <sys:String x:Key="Screens.Health.Overdue">فات معاده</sys:String>
+    <sys:String x:Key="Screens.Health.Completed">خلص 🎉</sys:String>
+    <sys:String x:Key="Screens.Health.Waiting">مستني</sys:String>
+    <sys:String x:Key="Screens.Health.NoDeadline">من غير ميعاد</sys:String>
+
+    <!-- Plans -->
+    <sys:String x:Key="Screens.Plans.Title">خططي</sys:String>
+    <sys:String x:Key="Screens.Plans.Add">+ خطة جديدة</sys:String>
+    <sys:String x:Key="Screens.Plans.FreeTime">وقت الفراغ</sys:String>
+    <sys:String x:Key="Screens.Plans.Settings">الإعدادات</sys:String>
+    <sys:String x:Key="Screens.Plans.Archive">أرشفة</sys:String>
+    <sys:String x:Key="Screens.Plans.Unarchive">رجّعها</sys:String>
+    <sys:String x:Key="Screens.Plans.Archived">متأرشفة</sys:String>
+    <sys:String x:Key="Screens.Plans.ArchivedSection">الخطط المتأرشفة</sys:String>
+    <sys:String x:Key="Screens.Plans.Empty">لسه مفيش خطط. دوس «+ خطة جديدة» وابدأ.</sys:String>
+    <sys:String x:Key="Screens.Plans.DeadlineFormat">آخر ميعاد {0}</sys:String>
+    <sys:String x:Key="Screens.Plans.NoDeadline">من غير آخر ميعاد</sys:String>
+    <sys:String x:Key="Screens.Plans.DeleteConfirm">تمسح «{0}»؟ هيتمسح معاها كل الوقت المتسجل ليها، ومفيش رجوع.</sys:String>
+
+    <!-- Editor -->
+    <sys:String x:Key="Screens.Editor.NewTitle">خطة جديدة</sys:String>
+    <sys:String x:Key="Screens.Editor.EditTitle">تعديل الخطة</sys:String>
+    <sys:String x:Key="Screens.Editor.Kind">النوع</sys:String>
+    <sys:String x:Key="Screens.Editor.Name">الاسم</sys:String>
+    <sys:String x:Key="Screens.Editor.Videos">عدد الفيديوهات</sys:String>
+    <sys:String x:Key="Screens.Editor.Duration">المدة الكلية</sys:String>
+    <sys:String x:Key="Screens.Editor.HoursUnit">ساعة</sys:String>
+    <sys:String x:Key="Screens.Editor.MinutesUnit">دقيقة</sys:String>
+    <sys:String x:Key="Screens.Editor.VideosDone">فيديوهات خلصتها</sys:String>
+    <sys:String x:Key="Screens.Editor.EstimatedHours">الساعات المتوقعة</sys:String>
+    <sys:String x:Key="Screens.Editor.AdjustRemaining">عدّل الباقي (ساعات)</sys:String>
+    <sys:String x:Key="Screens.Editor.CurrentRemaining">الباقي دلوقتي: {0}</sys:String>
+    <sys:String x:Key="Screens.Editor.StartDate">تاريخ البداية</sys:String>
+    <sys:String x:Key="Screens.Editor.Deadline">آخر ميعاد</sys:String>
+    <sys:String x:Key="Screens.Editor.NoDeadline">من غير آخر ميعاد</sys:String>
+    <sys:String x:Key="Screens.Editor.StartsAfter">تبدأ بعد</sys:String>
+    <sys:String x:Key="Screens.Editor.StartsAfterNone">(تبدأ على طول)</sys:String>
+    <sys:String x:Key="Screens.Editor.Color">اللون</sys:String>
+    <sys:String x:Key="Screens.Editor.Checklist">قائمة مهام (اختياري)</sys:String>
+    <sys:String x:Key="Screens.Editor.ChecklistHint">للتنظيم بس، مش بتدخل في الحسابات.</sys:String>
+    <sys:String x:Key="Screens.Editor.MoveUp">لفوق</sys:String>
+    <sys:String x:Key="Screens.Editor.MoveDown">لتحت</sys:String>
+    <sys:String x:Key="Screens.Editor.PreviewTitle">هتمشي إزاي</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Incomplete">كمّل البيانات علشان تشوف الخطة هتمشي إزاي.</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.OnTrack">≈ {0} في اليوم · هتخلص {1}</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Waiting">هتبدأ بعد «{0}»</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Tight">⚠ الوقت ضيق</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Impossible">⚠ محتاج {0}، وعندك {1} قبل آخر ميعاد ← أقرب ميعاد واقعي: {2}</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Overdue">⚠ آخر ميعاد عدّى ← أقرب ميعاد واقعي: {0}</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Completed">الخطة دي خلصت 🎉</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.NoFreeTime">⚠ مفيش وقت فراغ متسجل. ضيف وقت فراغ علشان نحسب.</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Archived">الخطة متأرشفة.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Name">اكتب اسم للخطة.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Videos">عدد الفيديوهات لازم يكون رقم أكبر من صفر.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Duration">المدة لازم تكون أكبر من صفر (ساعات ودقايق).</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.VideosDone">الفيديوهات اللي خلصتها لازم تكون رقم صفر أو أكتر.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.VideosDoneTooMany">الفيديوهات اللي خلصتها أكتر من عدد الفيديوهات.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Estimate">الساعات المتوقعة لازم تكون أكبر من صفر.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Adjust">الباقي لازم يكون رقم ساعات صفر أو أكتر.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Start">اختار تاريخ البداية.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.DeadlineMissing">اختار آخر ميعاد، أو علّم «من غير آخر ميعاد».</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.DeadlineBeforeStart">آخر ميعاد لازم يكون بعد تاريخ البداية أو في نفس اليوم.</sys:String>
+
+    <!-- FreeTime -->
+    <sys:String x:Key="Screens.FreeTime.Title">وقت الفراغ</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Intro">قد إيه عندك وقت للمذاكرة كل يوم؟ مذاكرة هتقسّمه على خططك.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Presets">ابدأ من:</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Preset.Student">طالب</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Preset.Employee">موظف</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Preset.Freelancer">فري لانسر</sys:String>
+    <sys:String x:Key="Screens.FreeTime.PresetsHint">بيملا الأسبوع، وبعدين عدّل براحتك.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.MinutesHeader">دقايق</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Reminder">تذكير</sys:String>
+    <sys:String x:Key="Screens.FreeTime.ComingSoon">(قريبًا)</sys:String>
+    <sys:String x:Key="Screens.FreeTime.ReminderHint">وقت التذكير زي 20:30 (التذكيرات جاية في إصدار 1.1)</sys:String>
+    <sys:String x:Key="Screens.FreeTime.WeeklyTotal">إجمالي الأسبوع: {0}</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Exceptions">أيام مختلفة</sys:String>
+    <sys:String x:Key="Screens.FreeTime.ExceptionsHint">إجازة، يوم فاضي، أو يوم مشغول. لو اتداخلوا، الأحدث هو اللي بيتحسب.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.AddException">+ إضافة فترة</sys:String>
+    <sys:String x:Key="Screens.FreeTime.NoExceptions">مفيش أيام مختلفة.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.From">من</sys:String>
+    <sys:String x:Key="Screens.FreeTime.To">لحد</sys:String>
+    <sys:String x:Key="Screens.FreeTime.MinutesPerDay">دقيقة في اليوم</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Label.Vacation">إجازة</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Label.FreeDay">يوم فاضي</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Label.BusyDay">يوم مشغول</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Dates">اختار تاريخ البداية والنهاية لكل فترة.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Range">تاريخ النهاية لازم يكون بعد تاريخ البداية.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Minutes">الدقايق لازم تكون من 0 لـ 1440.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Reminder">وقت التذكير يوم {0} مش مظبوط (اكتبه زي 20:30).</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="Screens.Settings.Title">الإعدادات</sys:String>
+    <sys:String x:Key="Screens.Settings.Language">اللغة</sys:String>
+    <sys:String x:Key="Screens.Settings.Data">بياناتك</sys:String>
+    <sys:String x:Key="Screens.Settings.DataHint">كل حاجة محفوظة على جهازك بس. فيه نسخة احتياطية تلقائية كل يوم.</sys:String>
+    <sys:String x:Key="Screens.Settings.Export">تصدير…</sys:String>
+    <sys:String x:Key="Screens.Settings.Import">استيراد…</sys:String>
+    <sys:String x:Key="Screens.Settings.OpenDataFolder">افتح فولدر البيانات</sys:String>
+    <sys:String x:Key="Screens.Settings.FileFilter">ملف مذاكرة (*.json)|*.json|كل الملفات (*.*)|*.*</sys:String>
+    <sys:String x:Key="Screens.Settings.ExportDone">اتصدّرت البيانات في:&#10;{0}</sys:String>
+    <sys:String x:Key="Screens.Settings.ExportFailed">معرفتش أصدّر: {0}</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportConfirm">الاستيراد هيستبدل كل بياناتك الحالية (هيتعمل نسخة احتياطية الأول). نكمل؟</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportDone">اتستوردت البيانات.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportFailed">معرفتش أستورد: {0}</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.None">حصلت مشكلة.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.FileNotFound">الملف مش موجود.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.InvalidFile">الملف ده مش ملف مذاكرة سليم.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.UnsupportedSchemaVersion">الملف ده من إصدار أحدث من مذاكرة. حدّث البرنامج الأول.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.MissingPlanReference">الملف ناقص: فيه وقت متسجل لخطة مش موجودة.</sys:String>
+    <sys:String x:Key="Screens.Settings.Updates">التحديثات</sys:String>
+    <sys:String x:Key="Screens.Settings.CheckUpdates">دوّر على تحديث</sys:String>
+    <sys:String x:Key="Screens.Settings.UpdatesChecking">بدوّر…</sys:String>
+    <sys:String x:Key="Screens.Settings.UpdateReady">فيه تحديث نزل، وهيتثبت لما تقفل البرنامج.</sys:String>
+    <sys:String x:Key="Screens.Settings.UpToDate">عندك آخر إصدار.</sys:String>
+    <sys:String x:Key="Screens.Settings.UpdatesUnavailable">التحديثات بتشتغل في النسخة المتثبتة بس.</sys:String>
+    <sys:String x:Key="Screens.Settings.About">عن البرنامج</sys:String>
+    <sys:String x:Key="Screens.Settings.VersionFormat">إصدار {0}</sys:String>
+    <sys:String x:Key="Screens.Settings.GitHub">الكود على GitHub</sys:String>
+    <sys:String x:Key="Screens.Settings.License">مفتوح المصدر ومجاني، رخصة MIT.</sys:String>
+
+    <!-- Onboarding -->
+    <sys:String x:Key="Screens.Onboarding.Title">أهلًا بيك في مذاكرة</sys:String>
+    <sys:String x:Key="Screens.Onboarding.Welcome">يلا نجهّز مذاكرة في دقيقة</sys:String>
+    <sys:String x:Key="Screens.Onboarding.StepFormat">خطوة {0} من {1}</sys:String>
+    <sys:String x:Key="Screens.Onboarding.LanguageTitle">اختار اللغة</sys:String>
+    <sys:String x:Key="Screens.Onboarding.LanguageHint">تقدر تغيّرها بعدين من الإعدادات.</sys:String>
+    <sys:String x:Key="Screens.Onboarding.FreeTimeTitle">وقتك الفاضي</sys:String>
+    <sys:String x:Key="Screens.Onboarding.FreeTimeHint">اختار أقرب وصف ليك، وعدّل الدقايق لكل يوم.</sys:String>
+    <sys:String x:Key="Screens.Onboarding.PlanTitle">أول خطة</sys:String>
+    <sys:String x:Key="Screens.Onboarding.PlanHint">كورس بتذاكره أو مشروع شغال عليه. تقدر تتخطى وتضيف بعدين.</sys:String>
+    <sys:String x:Key="Screens.Onboarding.SkipPlan">تخطي</sys:String>
+    <sys:String x:Key="Screens.Onboarding.Finish">يلا نبدأ</sys:String>
+</ResourceDictionary>

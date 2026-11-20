@@ -1,0 +1,55 @@
+<UserControl x:Class="Mozakra.App.Views.NoteAgendaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:Mozakra.App.Views">
+    <StackPanel>
+        <!-- No plans yet -->
+        <StackPanel Visibility="{Binding HasNoPlans, Converter={x:Static v:NoteVisibilityConverter.Instance}}" Margin="0,4">
+            <TextBlock Text="{DynamicResource Note.NoPlans}" TextWrapping="Wrap" />
+            <Button Style="{StaticResource AccentButton}" Command="{Binding AddFirstPlanCommand}"
+                    HorizontalAlignment="Stretch" Margin="0,8,0,0">
+                <TextBlock Foreground="White" FontWeight="SemiBold" Text="{DynamicResource Note.AddFirstPlan}" />
+            </Button>
+        </StackPanel>
+
+        <!-- Today's total -->
+        <StackPanel Visibility="{Binding HasNoPlans, Converter={x:Static v:NoteVisibilityConverter.Instance}, ConverterParameter=Invert}">
+            <TextBlock Text="{Binding TodaySummary}" FontSize="16" FontWeight="Bold" TextWrapping="Wrap" />
+            <ProgressBar Value="{Binding TodayPercent, Mode=OneWay}"
+                         Visibility="{Binding TodayPercent, Converter={x:Static v:NoteVisibilityConverter.Instance}}" />
+        </StackPanel>
+        <TextBlock Text="{DynamicResource Note.RestDay}" Style="{StaticResource Small}" FontSize="13" Margin="0,4"
+                   Visibility="{Binding IsRestDay, Converter={x:Static v:NoteVisibilityConverter.Instance}}" />
+        <TextBlock Text="{DynamicResource Note.GoalReached}" FontWeight="SemiBold" Foreground="{StaticResource Success}"
+                   Margin="0,4" TextWrapping="Wrap"
+                   Visibility="{Binding IsGoalReached, Converter={x:Static v:NoteVisibilityConverter.Instance}}" />
+        <TextBlock Text="{DynamicResource Note.AllComplete}" FontWeight="SemiBold" Foreground="{StaticResource Success}"
+                   Margin="0,4" TextWrapping="Wrap"
+                   Visibility="{Binding IsAllComplete, Converter={x:Static v:NoteVisibilityConverter.Instance}}" />
+
+        <!-- One row per plan -->
+        <ItemsControl ItemsSource="{Binding Agenda}" Margin="0,4,0,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource NoteInnerCard}">
+                        <StackPanel>
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding HealthIcon}" ToolTip="{Binding HealthText}"
+                                           Margin="6,0,0,0" VerticalAlignment="Center" />
+                                <Ellipse Width="10" Height="10" Fill="{Binding ColorHex}" Stroke="#40000000"
+                                         StrokeThickness="1" Margin="0,0,7,0" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis"
+                                           ToolTip="{Binding Name}" VerticalAlignment="Center" />
+                            </DockPanel>
+                            <ProgressBar Value="{Binding ProgressPercent, Mode=OneWay}" Foreground="{StaticResource Accent}" Height="6" />
+                            <DockPanel>
+                                <TextBlock DockPanel.Dock="Right" Text="{Binding ProgressText}" Style="{StaticResource Small}" />
+                                <TextBlock Text="{Binding TargetText}" Style="{StaticResource Small}" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

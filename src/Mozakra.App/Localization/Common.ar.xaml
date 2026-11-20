@@ -1,0 +1,39 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <!-- Shared strings (Plan 04). Keys must match Common.en.xaml. -->
+
+    <!-- App -->
+    <sys:String x:Key="Common.AppName">مذاكرة</sys:String>
+    <sys:String x:Key="Common.Tagline">ذاكر لمستقبلك</sys:String>
+    <sys:String x:Key="Common.TrayTooltip">مذاكرة: ذاكر لمستقبلك</sys:String>
+
+    <!-- Tray -->
+    <sys:String x:Key="Common.Show">إظهار النوتة</sys:String>
+    <sys:String x:Key="Common.Hide">إخفاء</sys:String>
+    <sys:String x:Key="Common.StartWithWindows">يفتح مع Windows</sys:String>
+    <sys:String x:Key="Common.Exit">خروج</sys:String>
+
+    <!-- Generic actions -->
+    <sys:String x:Key="Common.OK">تمام</sys:String>
+    <sys:String x:Key="Common.Cancel">إلغاء</sys:String>
+    <sys:String x:Key="Common.Yes">أيوه</sys:String>
+    <sys:String x:Key="Common.No">لأ</sys:String>
+    <sys:String x:Key="Common.Save">حفظ</sys:String>
+    <sys:String x:Key="Common.Delete">حذف</sys:String>
+    <sys:String x:Key="Common.Edit">تعديل</sys:String>
+    <sys:String x:Key="Common.Add">إضافة</sys:String>
+    <sys:String x:Key="Common.Close">إغلاق</sys:String>
+    <sys:String x:Key="Common.Back">رجوع</sys:String>
+    <sys:String x:Key="Common.Next">التالي</sys:String>
+    <sys:String x:Key="Common.Skip">تخطي</sys:String>
+    <sys:String x:Key="Common.Done">خلاص</sys:String>
+    <sys:String x:Key="Common.Undo">تراجع</sys:String>
+
+    <!-- Units: use with Loc.T(key, value) -->
+    <sys:String x:Key="Common.MinutesFormat">{0} د</sys:String>
+    <sys:String x:Key="Common.HoursFormat">{0} س</sys:String>
+    <sys:String x:Key="Common.HoursMinutesFormat">{0} س {1} د</sys:String>
+    <sys:String x:Key="Common.VideosFormat">{0} فيديو</sys:String>
+
+</ResourceDictionary>

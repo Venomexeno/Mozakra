@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- NotifyIcon (tray) lives in WinForms. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>Mozakra</AssemblyName>
+    <RootNamespace>Mozakra.App</RootNamespace>
+    <ApplicationIcon>Assets\mozakra.ico</ApplicationIcon>
+    <StartupObject>Mozakra.App.Program</StartupObject>
+    <!-- Needed by the LibraryImport source generator (Win32 interop in Services/NativeMethods.cs). -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <!-- WinForms implicit usings clash with WPF names (Application, Button, Color...).
+       Keep WPF as the default; WinForms/Drawing types are used through aliases (WF, SD). -->
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <!-- App.xaml is a Page so the custom Program.Main (Velopack + single instance + DI) is the entry point. -->
+  <ItemGroup>
+    <ApplicationDefinition Remove="App.xaml" />
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\mozakra.ico" />
+  </ItemGroup>
+
+  <!-- RepositoryUrl (Directory.Build.props) → readable at runtime for the Velopack GitHub source. -->
+  <ItemGroup>
+    <AssemblyMetadata Include="RepositoryUrl" Value="$(RepositoryUrl)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mozakra.Core\Mozakra.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Velopack" Version="1.2.161" />
+  </ItemGroup>
+
+</Project>

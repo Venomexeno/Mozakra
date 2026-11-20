@@ -1,0 +1,209 @@
+<UserControl x:Class="Mozakra.App.Views.PlanEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:Mozakra.App.ViewModels"
+             FontFamily="{StaticResource AppFont}">
+    <!-- The plan form (DataContext = PlanEditorViewModel). Used by the editor window and the wizard's step 3. -->
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <Style x:Key="FieldLabel" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Width" Value="170" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="DockPanel.Dock" Value="Left" />
+        </Style>
+        <Style x:Key="Row" TargetType="DockPanel">
+            <Setter Property="Margin" Value="0,3" />
+            <Setter Property="LastChildFill" Value="True" />
+        </Style>
+        <Style x:Key="Section" TargetType="Border" BasedOn="{StaticResource Card}" />
+        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="Margin" Value="0,0,16,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <!-- Live preview + errors stay visible under the scrolling form. -->
+        <StackPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+            <Border Style="{StaticResource StickyCard}" Margin="2,0,2,6" Padding="12,8">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Screens.Editor.PreviewTitle}" Style="{StaticResource Small}" />
+                    <TextBlock Text="{Binding PreviewText}" TextWrapping="Wrap" FontWeight="SemiBold" FontSize="14">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding PreviewIsWarning}" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource Accent}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+            <TextBlock Text="{Binding ErrorsText}" Foreground="{StaticResource Accent}" TextWrapping="Wrap" Margin="4,4"
+                       Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibility}}" />
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+            <!-- Kind + name -->
+            <Border Style="{StaticResource Section}">
+                <StackPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.Kind}" Style="{StaticResource FieldLabel}" />
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton GroupName="Kind" Content="{DynamicResource Screens.Kind.Course}" IsChecked="{Binding IsCourse}" />
+                            <RadioButton GroupName="Kind" Content="{DynamicResource Screens.Kind.Work}" IsChecked="{Binding IsWork}" />
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.Name}" Style="{StaticResource FieldLabel}" />
+                        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Course -->
+            <Border Style="{StaticResource Section}" Visibility="{Binding IsCourse, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.Videos}" Style="{StaticResource FieldLabel}" />
+                        <TextBox Text="{Binding VideosText, UpdateSourceTrigger=PropertyChanged}" Width="90" HorizontalAlignment="Left" />
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.Duration}" Style="{StaticResource FieldLabel}" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding HoursText, UpdateSourceTrigger=PropertyChanged}" Width="70" />
+                            <TextBlock Text="{DynamicResource Screens.Editor.HoursUnit}" VerticalAlignment="Center" Margin="2,0,10,0" />
+                            <TextBox Text="{Binding MinutesText, UpdateSourceTrigger=PropertyChanged}" Width="70" />
+                            <TextBlock Text="{DynamicResource Screens.Editor.MinutesUnit}" VerticalAlignment="Center" Margin="2,0" />
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.VideosDone}" Style="{StaticResource FieldLabel}" />
+                        <TextBox Text="{Binding VideosDoneText, UpdateSourceTrigger=PropertyChanged}" Width="90" HorizontalAlignment="Left" />
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Work -->
+            <Border Style="{StaticResource Section}" Visibility="{Binding IsWork, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.EstimatedHours}" Style="{StaticResource FieldLabel}" />
+                        <TextBox Text="{Binding EstimatedHoursText, UpdateSourceTrigger=PropertyChanged}" Width="90" HorizontalAlignment="Left" />
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}" Visibility="{Binding ShowAdjustRemaining, Converter={StaticResource BoolToVisibility}}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.AdjustRemaining}" Style="{StaticResource FieldLabel}" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding AdjustRemainingText, UpdateSourceTrigger=PropertyChanged}" Width="90" />
+                            <TextBlock Text="{Binding CurrentRemainingText}" Style="{StaticResource Small}" VerticalAlignment="Center" Margin="8,0" />
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Dates, dependency, color -->
+            <Border Style="{StaticResource Section}">
+                <StackPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.StartDate}" Style="{StaticResource FieldLabel}" />
+                        <DatePicker SelectedDate="{Binding StartDate}" Width="160" HorizontalAlignment="Left" />
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.Deadline}" Style="{StaticResource FieldLabel}" />
+                        <StackPanel Orientation="Horizontal">
+                            <DatePicker SelectedDate="{Binding Deadline}" Width="160">
+                                <DatePicker.Style>
+                                    <Style TargetType="DatePicker" BasedOn="{StaticResource {x:Type DatePicker}}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding NoDeadline}" Value="True">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DatePicker.Style>
+                            </DatePicker>
+                            <CheckBox Content="{DynamicResource Screens.Editor.NoDeadline}" IsChecked="{Binding NoDeadline}"
+                                      VerticalAlignment="Center" Margin="12,0" />
+                        </StackPanel>
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.StartsAfter}" Style="{StaticResource FieldLabel}" />
+                        <ComboBox ItemsSource="{Binding StartsAfterOptions}" SelectedItem="{Binding SelectedStartsAfter}"
+                                  DisplayMemberPath="Name" Width="240" HorizontalAlignment="Left" />
+                    </DockPanel>
+                    <DockPanel Style="{StaticResource Row}">
+                        <TextBlock Text="{DynamicResource Screens.Editor.Color}" Style="{StaticResource FieldLabel}" />
+                        <ItemsControl ItemsSource="{Binding Colors}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:PlanEditorColor}">
+                                    <Button Command="{Binding DataContext.SelectColorCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}" Margin="2" Padding="0" Background="Transparent" Cursor="Hand">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border x:Name="Swatch" Width="28" Height="28" CornerRadius="14" Background="{Binding Brush}"
+                                                        BorderBrush="{StaticResource SoftBorder}" BorderThickness="1" />
+                                                <ControlTemplate.Triggers>
+                                                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                                        <Setter TargetName="Swatch" Property="BorderBrush" Value="{StaticResource Ink}" />
+                                                        <Setter TargetName="Swatch" Property="BorderThickness" Value="3" />
+                                                    </DataTrigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Checklist (optional; not used in the math) -->
+            <Border Style="{StaticResource Section}">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Screens.Editor.Checklist}" FontWeight="SemiBold" />
+                    <TextBlock Text="{DynamicResource Screens.Editor.ChecklistHint}" Style="{StaticResource Small}" Margin="0,0,0,4" />
+                    <ItemsControl ItemsSource="{Binding Checklist}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type vm:PlanEditorChecklistItem}">
+                                <DockPanel Margin="0,1">
+                                    <CheckBox DockPanel.Dock="Left" IsChecked="{Binding Done}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                        <Button Content="▲" Style="{StaticResource IconButton}" ToolTip="{DynamicResource Screens.Editor.MoveUp}"
+                                                Command="{Binding DataContext.MoveChecklistItemUpCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="▼" Style="{StaticResource IconButton}" ToolTip="{DynamicResource Screens.Editor.MoveDown}"
+                                                Command="{Binding DataContext.MoveChecklistItemDownCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" />
+                                        <Button Content="✕" Style="{StaticResource IconButton}" ToolTip="{DynamicResource Common.Delete}"
+                                                Command="{Binding DataContext.RemoveChecklistItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}" />
+                                    </StackPanel>
+                                    <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <DockPanel Margin="0,4,0,0">
+                        <Button DockPanel.Dock="Right" Content="{DynamicResource Common.Add}" Command="{Binding AddChecklistItemCommand}" />
+                        <TextBox Text="{Binding NewChecklistTitle, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding AddChecklistItemCommand}" />
+                            </TextBox.InputBindings>
+                        </TextBox>
+                    </DockPanel>
+                </StackPanel>
+            </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

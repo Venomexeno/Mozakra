@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Mozakra.App/Mozakra.App.csproj" />
+    <Project Path="src/Mozakra.Core/Mozakra.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Mozakra.App.Tests/Mozakra.App.Tests.csproj" />
+    <Project Path="tests/Mozakra.Core.Tests/Mozakra.Core.Tests.csproj" />
+  </Folder>
+</Solution>

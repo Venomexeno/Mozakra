@@ -1,0 +1,73 @@
+<Window x:Class="Mozakra.App.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource Screens.Settings.Title}"
+        Icon="pack://application:,,,/Mozakra;component/Assets/mozakra.ico"
+        Width="520" SizeToContent="Height" ResizeMode="CanMinimize"
+        Background="{StaticResource Paper}"
+        FlowDirection="{DynamicResource AppFlowDirection}"
+        FontFamily="{StaticResource AppFont}">
+    <Window.Resources>
+        <Style x:Key="Section" TargetType="Border" BasedOn="{StaticResource Card}" />
+        <Style x:Key="Header" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,0,0,4" />
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="16">
+        <TextBlock Text="{DynamicResource Screens.Settings.Title}" Style="{StaticResource Title}" Margin="2,0,0,12" />
+
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <TextBlock Text="{DynamicResource Screens.Settings.Language}" Style="{StaticResource Header}" />
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton GroupName="Language" Content="العربية" IsChecked="{Binding IsArabic}" Margin="0,0,20,0" FontSize="14" />
+                    <RadioButton GroupName="Language" Content="English" IsChecked="{Binding IsEnglish}" FontSize="14" />
+                </StackPanel>
+                <CheckBox Content="{DynamicResource Common.StartWithWindows}" IsChecked="{Binding StartWithWindows}" Margin="0,10,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <TextBlock Text="{DynamicResource Screens.Settings.Data}" Style="{StaticResource Header}" />
+                <TextBlock Text="{DynamicResource Screens.Settings.DataHint}" Style="{StaticResource Small}" Margin="0,0,0,6" />
+                <WrapPanel>
+                    <Button Content="{DynamicResource Screens.Settings.Export}" Command="{Binding ExportCommand}" />
+                    <Button Content="{DynamicResource Screens.Settings.Import}" Command="{Binding ImportCommand}" />
+                    <Button Content="{DynamicResource Screens.Settings.OpenDataFolder}" Command="{Binding OpenDataFolderCommand}" />
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <TextBlock Text="{DynamicResource Screens.Settings.Updates}" Style="{StaticResource Header}" />
+                <DockPanel>
+                    <Button DockPanel.Dock="Left" Content="{DynamicResource Screens.Settings.CheckUpdates}" Command="{Binding CheckUpdatesCommand}" />
+                    <TextBlock Text="{Binding UpdateStatus}" Style="{StaticResource Small}" VerticalAlignment="Center" Margin="8,0" />
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource Section}">
+            <StackPanel>
+                <TextBlock Text="{DynamicResource Screens.Settings.About}" Style="{StaticResource Header}" />
+                <TextBlock>
+                    <Run Text="{DynamicResource Common.AppName}" FontWeight="SemiBold" />
+                    <Run Text="·" />
+                    <Run Text="{Binding VersionText, Mode=OneWay}" />
+                </TextBlock>
+                <TextBlock Text="{DynamicResource Common.Tagline}" Style="{StaticResource Small}" />
+                <TextBlock Margin="0,4,0,0">
+                    <Hyperlink Command="{Binding OpenRepositoryCommand}">
+                        <Run Text="{DynamicResource Screens.Settings.GitHub}" />
+                    </Hyperlink>
+                </TextBlock>
+                <TextBlock Text="{DynamicResource Screens.Settings.License}" Style="{StaticResource Small}" Margin="0,2,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Button Content="{DynamicResource Common.Close}" HorizontalAlignment="Right" IsCancel="True" Click="OnClose" />
+    </StackPanel>
+</Window>

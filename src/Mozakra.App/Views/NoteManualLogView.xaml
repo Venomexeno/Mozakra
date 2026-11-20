@@ -1,0 +1,81 @@
+<UserControl x:Class="Mozakra.App.Views.NoteManualLogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:v="clr-namespace:Mozakra.App.Views">
+    <!-- Log by hand: plan + day, minutes studied, videos finished (courses), then "Log". -->
+    <Border Style="{StaticResource NoteInnerCard}" Margin="0,8,0,0" Padding="12,10">
+        <StackPanel>
+            <TextBlock Text="{DynamicResource Note.ManualLogTitle}" FontWeight="SemiBold" FontSize="14" />
+
+            <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <ComboBox ItemsSource="{Binding PlanOptions}" SelectedItem="{Binding LogPlan}" DisplayMemberPath="Name"
+                          Margin="0,3,3,3" ToolTip="{DynamicResource Note.LogPlan}" />
+                <DatePicker Grid.Column="1" SelectedDate="{Binding LogDate}" DisplayDateEnd="{Binding MaxLogDate, Mode=OneWay}"
+                            Margin="3,3,0,3" Width="122" ToolTip="{DynamicResource Note.LogDate}" />
+            </Grid>
+
+            <!-- Minutes (work plans) -->
+            <DockPanel Margin="0,4,0,0" Visibility="{Binding IsLogPlanWork, Converter={x:Static v:NoteVisibilityConverter.Instance}}">
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Note.MinutesLabel}" Width="78" VerticalAlignment="Center" />
+                <TextBox DockPanel.Dock="Left" Text="{Binding LogMinutesText, UpdateSourceTrigger=PropertyChanged}" Width="62"
+                         Margin="0,3" VerticalAlignment="Center" ToolTip="{DynamicResource Note.MinutesHint}" />
+                <TextBlock Text="{DynamicResource Note.MinutesUnit}" Style="{StaticResource Small}" VerticalAlignment="Center" Margin="8,0,0,0" />
+            </DockPanel>
+            <!-- Left-to-right so "+15" keeps its sign in front in Arabic too -->
+            <WrapPanel FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="74,0,0,2"
+                       ToolTip="{DynamicResource Note.QuickHint}"
+                       Visibility="{Binding IsLogPlanWork, Converter={x:Static v:NoteVisibilityConverter.Instance}}">
+                <WrapPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource OnNoteButton}">
+                        <Setter Property="Padding" Value="9,3" />
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="FontSize" Value="12" />
+                    </Style>
+                </WrapPanel.Resources>
+                <Button Content="{DynamicResource Note.Quick15}" Command="{Binding QuickAddCommand}" CommandParameter="15" />
+                <Button Content="{DynamicResource Note.Quick30}" Command="{Binding QuickAddCommand}" CommandParameter="30" />
+                <Button Content="{DynamicResource Note.Quick45}" Command="{Binding QuickAddCommand}" CommandParameter="45" />
+                <Button Content="{DynamicResource Note.Quick60}" Command="{Binding QuickAddCommand}" CommandParameter="60" />
+            </WrapPanel>
+
+            <!-- Videos finished (courses) -->
+            <DockPanel Margin="0,4,0,0" Visibility="{Binding IsLogPlanCourse, Converter={x:Static v:NoteVisibilityConverter.Instance}}">
+                <TextBlock DockPanel.Dock="Left" Text="{DynamicResource Note.VideosLabel}" Width="78" VerticalAlignment="Center" />
+                <TextBox DockPanel.Dock="Left" Text="{Binding LogVideosText, UpdateSourceTrigger=PropertyChanged}" Width="62"
+                         Margin="0,3" VerticalAlignment="Center" ToolTip="{DynamicResource Note.VideosHint}" />
+                <TextBlock Text="{DynamicResource Note.VideosUnit}" Style="{StaticResource Small}" VerticalAlignment="Center" Margin="8,0,0,0" />
+            </DockPanel>
+            <WrapPanel FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="74,0,0,2"
+                       ToolTip="{DynamicResource Note.QuickVideosHint}"
+                       Visibility="{Binding IsLogPlanCourse, Converter={x:Static v:NoteVisibilityConverter.Instance}}">
+                <WrapPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource OnNoteButton}">
+                        <Setter Property="Padding" Value="11,3" />
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="FontSize" Value="12" />
+                    </Style>
+                </WrapPanel.Resources>
+                <Button Content="+1" Command="{Binding QuickAddVideosCommand}" CommandParameter="1" />
+                <Button Content="+2" Command="{Binding QuickAddVideosCommand}" CommandParameter="2" />
+                <Button Content="+3" Command="{Binding QuickAddVideosCommand}" CommandParameter="3" />
+                <Button Content="+5" Command="{Binding QuickAddVideosCommand}" CommandParameter="5" />
+            </WrapPanel>
+
+            <Grid Margin="0,6,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Style="{StaticResource AccentButton}" Command="{Binding AddLogCommand}" Margin="0,3,3,3">
+                    <TextBlock Foreground="White" FontWeight="SemiBold" Text="{DynamicResource Note.AddLog}" />
+                </Button>
+                <Button Grid.Column="1" Content="{DynamicResource Note.SubtractMinutes}" Command="{Binding SubtractLogCommand}"
+                        ToolTip="{DynamicResource Note.SubtractHint}" Margin="3,3,0,3" />
+            </Grid>
+        </StackPanel>
+    </Border>
+</UserControl>

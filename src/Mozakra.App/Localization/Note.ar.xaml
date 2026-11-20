@@ -1,0 +1,140 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <!-- The note (Plan 05). Keys must match Note.en.xaml. {0}, {1} = values filled in by code. -->
+
+    <!-- Header -->
+    <sys:String x:Key="Note.DateFormat">dddd، d MMMM</sys:String>
+    <sys:String x:Key="Note.ShortDateFormat">d MMM</sys:String>
+    <sys:String x:Key="Note.LongDateFormat">dddd d MMM</sys:String>
+    <x:Array x:Key="Note.Nudges" Type="sys:String">
+        <sys:String>خطوة صغيرة كل يوم أحسن من جري يوم واحد 💪</sys:String>
+        <sys:String>انت بكرة هتشكر نفسك على النهارده 🙌</sys:String>
+        <sys:String>ابدأ بس، 10 دقايق كفاية تسخّن ▶</sys:String>
+        <sys:String>فيديو كمان وتبقى أقرب من امبارح 🎬</sys:String>
+        <sys:String>الاستمرار هو السر 🔥</sys:String>
+        <sys:String>الخطة بتنجح لما تمشي عليها 🎯</sys:String>
+        <sys:String>الموبايل بعيد، ركّز شوية، يلا 📵</sys:String>
+        <sys:String>مش لازم تكون شاطر علشان تبدأ، بس لازم تبدأ علشان تبقى شاطر ✨</sys:String>
+        <sys:String>اتعلمها النهارده، استخدمها بكرة 🚀</sys:String>
+        <sys:String>شوية كل يوم بيعملوا كتير 📈</sys:String>
+    </x:Array>
+    <!-- الأحد..السبت -->
+    <x:Array x:Key="Note.WeekDays" Type="sys:String">
+        <sys:String>حد</sys:String>
+        <sys:String>اتنين</sys:String>
+        <sys:String>تلات</sys:String>
+        <sys:String>أربع</sys:String>
+        <sys:String>خميس</sys:String>
+        <sys:String>جمعة</sys:String>
+        <sys:String>سبت</sys:String>
+    </x:Array>
+
+    <!-- Agenda -->
+    <sys:String x:Key="Note.TodaySummary">النهارده: {0} / {1}</sys:String>
+    <sys:String x:Key="Note.TodayLogged">ذاكرت النهارده: {0}</sys:String>
+    <sys:String x:Key="Note.Bonus">زيادة</sys:String>
+    <sys:String x:Key="Note.NoPlans">لسه مفيش خطط. ضيف كورس أو مشروع ومذاكرة هتقسم وقتك الفاضي عليهم.</sys:String>
+    <sys:String x:Key="Note.AddFirstPlan">➕ ضيف أول خطة</sys:String>
+    <sys:String x:Key="Note.RestDay">يوم راحة 😴 (لو ذاكرت هيتحسب زيادة)</sys:String>
+    <sys:String x:Key="Note.GoalReached">خلصت المطلوب النهارده 🎉</sys:String>
+    <sys:String x:Key="Note.AllComplete">خلصت كل خططك 🎓 ضيف خطة جديدة لما تكون جاهز.</sys:String>
+    <sys:String x:Key="Note.Health.OnTrack">ماشي تمام</sys:String>
+    <sys:String x:Key="Note.Health.AtRisk">على الحفة: محتاج تقريبًا كل وقتك الفاضي</sys:String>
+    <sys:String x:Key="Note.Health.Impossible">الوقت مش كفاية قبل الميعاد</sys:String>
+    <sys:String x:Key="Note.Health.Overdue">الميعاد عدّى</sys:String>
+    <sys:String x:Key="Note.Health.Completed">خلصت</sys:String>
+    <sys:String x:Key="Note.Health.Waiting">مستني خطة تانية تخلص</sys:String>
+    <sys:String x:Key="Note.Health.NoDeadline">من غير ميعاد</sys:String>
+
+
+    <!-- Footer buttons -->
+    <sys:String x:Key="Note.UndoButton">↩ تراجع</sys:String>
+    <sys:String x:Key="Note.UndoTooltip">يرجّع: {0} (Ctrl+Z)</sys:String>
+    <sys:String x:Key="Note.DetailsButton">📊 التفاصيل</sys:String>
+    <sys:String x:Key="Note.StreakFormat">🔥 {0} يوم متواصل</sys:String>
+    <sys:String x:Key="Note.StreakNone">🔥 ابدأ سلسلة النهارده</sys:String>
+    <sys:String x:Key="Note.NavPlans">📋 الخطط</sys:String>
+    <sys:String x:Key="Note.NavFreeTime">🕒 وقتي الفاضي</sys:String>
+    <sys:String x:Key="Note.NavSettings">⚙ الإعدادات</sys:String>
+
+    <!-- Manual log -->
+    <sys:String x:Key="Note.ManualLogTitle">✍ سجّل اللي ذاكرته</sys:String>
+    <sys:String x:Key="Note.LogPlan">الخطة</sys:String>
+    <sys:String x:Key="Note.LogDate">اليوم</sys:String>
+    <sys:String x:Key="Note.Quick15">+15</sys:String>
+    <sys:String x:Key="Note.Quick30">+30</sys:String>
+    <sys:String x:Key="Note.Quick45">+45</sys:String>
+    <sys:String x:Key="Note.Quick60">+60</sys:String>
+    <sys:String x:Key="Note.MinutesHint">ذاكرت كام دقيقة</sys:String>
+    <sys:String x:Key="Note.QuickHint">بيزوّد الدقايق في الخانة</sys:String>
+    <sys:String x:Key="Note.SubtractMinutes">➖ امسح</sys:String>
+    <sys:String x:Key="Note.MinutesLabel">⏱ الوقت</sys:String>
+    <sys:String x:Key="Note.MinutesUnit">دقيقة</sys:String>
+    <sys:String x:Key="Note.VideosHint">خلصت كام فيديو</sys:String>
+    <sys:String x:Key="Note.VideosUnit">فيديو</sys:String>
+    <sys:String x:Key="Note.AddLog">✓ سجّل</sys:String>
+    <sys:String x:Key="Note.VideosProgress">{0}/{1} فيديو</sys:String>
+    <sys:String x:Key="Note.QuickVideosHint">بيزوّد عدد الفيديوهات في الخانة</sys:String>
+    <sys:String x:Key="Note.SubtractHint">يمسح من اليوم ده: فيديوهات للكورس، ودقايق للشغل</sys:String>
+    <sys:String x:Key="Note.VideosLabel">🎬 خلصت</sys:String>
+
+    <!-- Warnings -->
+    <sys:String x:Key="Note.Warning.Impossible">محتاج {0}، وعندك {1} بس قبل {2}.</sys:String>
+    <sys:String x:Key="Note.Warning.Overdue">الميعاد كان {0} ولسه فاضل {1}.</sys:String>
+    <sys:String x:Key="Note.Warning.Extend">📅 مدّ لـ {0}</sys:String>
+    <sys:String x:Key="Note.Warning.AddFreeTime">🕒 زوّد وقت فاضي</sys:String>
+    <sys:String x:Key="Note.Warning.Leave">سيبها</sys:String>
+
+    <!-- Details -->
+    <sys:String x:Key="Note.Week.Title">📅 الأسبوع ده: {0} / {1}</sys:String>
+    <sys:String x:Key="Note.Week.Hint">دوس على أي يوم علشان تعدّل دقايقه</sys:String>
+    <sys:String x:Key="Note.Week.DayTooltip">{0}: {1} من {2}</sys:String>
+    <sys:String x:Key="Note.StatusTitle">📈 الخطط</sys:String>
+    <sys:String x:Key="Note.Status.Videos">{0}/{1} فيديو</sys:String>
+    <sys:String x:Key="Note.Status.Left">فاضل {0}</sys:String>
+    <sys:String x:Key="Note.Status.Completed">خلصت 🎓</sys:String>
+    <sys:String x:Key="Note.Status.Waiting">هتبدأ بعد {0}</sys:String>
+    <sys:String x:Key="Note.Status.MoreWaiting">⏳ و{0} خطط تانية مستنية بعدها (كلها في شاشة الخطط)</sys:String>
+    <sys:String x:Key="Note.Status.ForecastDeadline">هتخلص ≈ {0} · الميعاد {1}</sys:String>
+    <sys:String x:Key="Note.Status.Forecast">هتخلص ≈ {0}</sys:String>
+    <sys:String x:Key="Note.Status.Deadline">الميعاد {0}</sys:String>
+    <sys:String x:Key="Note.EditDay.Title">✏ {0}: الدقايق لكل خطة</sys:String>
+    <sys:String x:Key="Note.EditDay.Hint">إجمالي اللي ذاكرته في اليوم ده لكل خطة.</sys:String>
+    <sys:String x:Key="Note.EditDay.Invalid">اكتب دقايق صحيحة (0 أو أكتر) في كل خانة.</sys:String>
+
+    <!-- Toasts -->
+    <sys:String x:Key="Note.Toast.Added">سجّلت {0} 💪</sys:String>
+    <sys:String x:Key="Note.Toast.Removed">اتمسح {0}</sys:String>
+    <sys:String x:Key="Note.Toast.Videos">{0} فيديو 🎬</sys:String>
+    <sys:String x:Key="Note.Toast.Tomorrow">بكرة بقى {0} بدل {1}</sys:String>
+    <sys:String x:Key="Note.Toast.Ahead">انت سابق النهارده بـ {0} 🔥</sys:String>
+    <sys:String x:Key="Note.Toast.GoalDone">خلصت مطلوب النهارده 🎉</sys:String>
+    <sys:String x:Key="Note.Toast.Left">فاضل {0} النهارده</sys:String>
+    <sys:String x:Key="Note.Toast.Bonus">وقت زيادة، كله بيتحسب 🌟</sys:String>
+    <sys:String x:Key="Note.Toast.CourseDone">🎉 خلصت {0}!</sys:String>
+    <sys:String x:Key="Note.Toast.VideosRange">عدد الفيديوهات من 0 لحد {0}</sys:String>
+    <sys:String x:Key="Note.Toast.OldTimer">كان عندك {0} على التايمر القديم، حطيتهم في الخانة. دوس سجّل علشان يتحسبوا.</sys:String>
+    <sys:String x:Key="Note.Toast.EnterVideos">اكتب خلصت كام فيديو الأول</sys:String>
+    <sys:String x:Key="Note.Toast.NothingToUndo">مفيش حاجة ترجع فيها</sys:String>
+    <sys:String x:Key="Note.Toast.Undone">↩ رجعت في: {0}</sys:String>
+    <sys:String x:Key="Note.Toast.NothingToSubtract">مفيش دقايق متسجلة للخطة دي في اليوم ده</sys:String>
+    <sys:String x:Key="Note.Toast.EnterMinutes">اكتب عدد الدقايق الأول</sys:String>
+    <sys:String x:Key="Note.Toast.PickPlan">اختار خطة الأول</sys:String>
+    <sys:String x:Key="Note.Toast.FutureDay">ده يوم لسه ما جاش 🙂</sys:String>
+    <sys:String x:Key="Note.Toast.AllVideosDone">كل الفيديوهات خلصت خلاص 🎓</sys:String>
+    <sys:String x:Key="Note.Toast.Extended">📅 {0}: الميعاد الجديد {1}</sys:String>
+    <sys:String x:Key="Note.Toast.DayEdited">✏ {0} بقى {1}</sys:String>
+
+    <!-- Undo labels ("يرجّع: …") -->
+    <sys:String x:Key="Note.Undo.Add">تسجيل {0}</sys:String>
+    <sys:String x:Key="Note.Undo.Subtract">مسح {0}</sys:String>
+    <sys:String x:Key="Note.Undo.Videos">{0} فيديو</sys:String>
+    <sys:String x:Key="Note.Undo.Extend">مدّ ميعاد {0}</sys:String>
+    <sys:String x:Key="Note.Undo.EditDay">تعديل {0}</sys:String>
+
+    <!-- Exit (tray) -->
+    <sys:String x:Key="Note.Exit.Remaining">متأكد؟ لسه فاضلك {0} النهارده 😅</sys:String>
+    <sys:String x:Key="Note.Exit.Done">خلصت المطلوب النهارده 🎉 تقفل مذاكرة؟</sys:String>
+    <sys:String x:Key="Note.Exit.Plain">تقفل مذاكرة؟</sys:String>
+</ResourceDictionary>

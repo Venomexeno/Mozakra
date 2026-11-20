@@ -1,0 +1,147 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <!-- Plans, plan editor, free time, settings, onboarding (Plan 06). Keys must match Screens.ar.xaml. -->
+
+    <!-- Kind -->
+    <sys:String x:Key="Screens.Kind.Course">Course</sys:String>
+    <sys:String x:Key="Screens.Kind.Work">Work / project</sys:String>
+
+    <!-- Health -->
+    <sys:String x:Key="Screens.Health.OnTrack">On track</sys:String>
+    <sys:String x:Key="Screens.Health.AtRisk">At risk</sys:String>
+    <sys:String x:Key="Screens.Health.Impossible">Won't make it</sys:String>
+    <sys:String x:Key="Screens.Health.Overdue">Overdue</sys:String>
+    <sys:String x:Key="Screens.Health.Completed">Completed 🎉</sys:String>
+    <sys:String x:Key="Screens.Health.Waiting">Waiting</sys:String>
+    <sys:String x:Key="Screens.Health.NoDeadline">No deadline</sys:String>
+
+    <!-- Plans -->
+    <sys:String x:Key="Screens.Plans.Title">My plans</sys:String>
+    <sys:String x:Key="Screens.Plans.Add">+ New plan</sys:String>
+    <sys:String x:Key="Screens.Plans.FreeTime">Free time</sys:String>
+    <sys:String x:Key="Screens.Plans.Settings">Settings</sys:String>
+    <sys:String x:Key="Screens.Plans.Archive">Archive</sys:String>
+    <sys:String x:Key="Screens.Plans.Unarchive">Unarchive</sys:String>
+    <sys:String x:Key="Screens.Plans.Archived">Archived</sys:String>
+    <sys:String x:Key="Screens.Plans.ArchivedSection">Archived plans</sys:String>
+    <sys:String x:Key="Screens.Plans.Empty">No plans yet. Click “+ New plan” to start.</sys:String>
+    <sys:String x:Key="Screens.Plans.DeadlineFormat">Deadline {0}</sys:String>
+    <sys:String x:Key="Screens.Plans.NoDeadline">No deadline</sys:String>
+    <sys:String x:Key="Screens.Plans.DeleteConfirm">Delete “{0}”? Its logged time is deleted too. This can't be undone.</sys:String>
+
+    <!-- Editor -->
+    <sys:String x:Key="Screens.Editor.NewTitle">New plan</sys:String>
+    <sys:String x:Key="Screens.Editor.EditTitle">Edit plan</sys:String>
+    <sys:String x:Key="Screens.Editor.Kind">Kind</sys:String>
+    <sys:String x:Key="Screens.Editor.Name">Name</sys:String>
+    <sys:String x:Key="Screens.Editor.Videos">Number of videos</sys:String>
+    <sys:String x:Key="Screens.Editor.Duration">Total duration</sys:String>
+    <sys:String x:Key="Screens.Editor.HoursUnit">h</sys:String>
+    <sys:String x:Key="Screens.Editor.MinutesUnit">min</sys:String>
+    <sys:String x:Key="Screens.Editor.VideosDone">Videos already done</sys:String>
+    <sys:String x:Key="Screens.Editor.EstimatedHours">Estimated hours</sys:String>
+    <sys:String x:Key="Screens.Editor.AdjustRemaining">Adjust remaining (hours)</sys:String>
+    <sys:String x:Key="Screens.Editor.CurrentRemaining">Remaining now: {0}</sys:String>
+    <sys:String x:Key="Screens.Editor.StartDate">Start date</sys:String>
+    <sys:String x:Key="Screens.Editor.Deadline">Deadline</sys:String>
+    <sys:String x:Key="Screens.Editor.NoDeadline">No deadline</sys:String>
+    <sys:String x:Key="Screens.Editor.StartsAfter">Starts after</sys:String>
+    <sys:String x:Key="Screens.Editor.StartsAfterNone">(starts right away)</sys:String>
+    <sys:String x:Key="Screens.Editor.Color">Color</sys:String>
+    <sys:String x:Key="Screens.Editor.Checklist">Checklist (optional)</sys:String>
+    <sys:String x:Key="Screens.Editor.ChecklistHint">Just for you; it isn't used in the math.</sys:String>
+    <sys:String x:Key="Screens.Editor.MoveUp">Move up</sys:String>
+    <sys:String x:Key="Screens.Editor.MoveDown">Move down</sys:String>
+    <sys:String x:Key="Screens.Editor.PreviewTitle">How it will go</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Incomplete">Fill in the details to see how the plan will go.</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.OnTrack">≈ {0}/day · finishes {1}</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Waiting">Starts after “{0}”</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Tight">⚠ tight</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Impossible">⚠ Needs {0}, you have {1} before the deadline → earliest realistic date: {2}</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Overdue">⚠ The deadline has passed → earliest realistic date: {0}</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Completed">This plan is already done 🎉</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.NoFreeTime">⚠ No free time set. Add free time to see a forecast.</sys:String>
+    <sys:String x:Key="Screens.Editor.Preview.Archived">This plan is archived.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Name">Enter a name.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Videos">The number of videos must be more than 0.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Duration">The duration must be more than 0 (hours and minutes).</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.VideosDone">Videos done must be 0 or more.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.VideosDoneTooMany">Videos done can't be more than the number of videos.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Estimate">Estimated hours must be more than 0.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Adjust">Remaining must be 0 hours or more.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.Start">Pick a start date.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.DeadlineMissing">Pick a deadline, or tick “No deadline”.</sys:String>
+    <sys:String x:Key="Screens.Editor.Error.DeadlineBeforeStart">The deadline must be on or after the start date.</sys:String>
+
+    <!-- FreeTime -->
+    <sys:String x:Key="Screens.FreeTime.Title">Free time</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Intro">How much time can you study each day? Mozakra splits it across your plans.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Presets">Start from:</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Preset.Student">Student</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Preset.Employee">Employee</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Preset.Freelancer">Freelancer</sys:String>
+    <sys:String x:Key="Screens.FreeTime.PresetsHint">Fills the week; then adjust it.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.MinutesHeader">Minutes</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Reminder">Reminder</sys:String>
+    <sys:String x:Key="Screens.FreeTime.ComingSoon">(coming soon)</sys:String>
+    <sys:String x:Key="Screens.FreeTime.ReminderHint">Reminder time like 20:30 (reminders arrive in v1.1)</sys:String>
+    <sys:String x:Key="Screens.FreeTime.WeeklyTotal">Weekly total: {0}</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Exceptions">Exceptions</sys:String>
+    <sys:String x:Key="Screens.FreeTime.ExceptionsHint">Vacation, a free day or a busy day. When they overlap, the newest one counts.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.AddException">+ Add a range</sys:String>
+    <sys:String x:Key="Screens.FreeTime.NoExceptions">No exceptions.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.From">From</sys:String>
+    <sys:String x:Key="Screens.FreeTime.To">To</sys:String>
+    <sys:String x:Key="Screens.FreeTime.MinutesPerDay">min/day</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Label.Vacation">Vacation</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Label.FreeDay">Free day</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Label.BusyDay">Busy day</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Dates">Pick both dates for every range.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Range">The end date must be on or after the start date.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Minutes">Minutes must be between 0 and 1440.</sys:String>
+    <sys:String x:Key="Screens.FreeTime.Error.Reminder">The reminder for {0} isn't a time (write it like 20:30).</sys:String>
+
+    <!-- Settings -->
+    <sys:String x:Key="Screens.Settings.Title">Settings</sys:String>
+    <sys:String x:Key="Screens.Settings.Language">Language</sys:String>
+    <sys:String x:Key="Screens.Settings.Data">Your data</sys:String>
+    <sys:String x:Key="Screens.Settings.DataHint">Everything stays on this PC. A backup is made automatically every day.</sys:String>
+    <sys:String x:Key="Screens.Settings.Export">Export…</sys:String>
+    <sys:String x:Key="Screens.Settings.Import">Import…</sys:String>
+    <sys:String x:Key="Screens.Settings.OpenDataFolder">Open the data folder</sys:String>
+    <sys:String x:Key="Screens.Settings.FileFilter">Mozakra file (*.json)|*.json|All files (*.*)|*.*</sys:String>
+    <sys:String x:Key="Screens.Settings.ExportDone">Exported to:&#10;{0}</sys:String>
+    <sys:String x:Key="Screens.Settings.ExportFailed">Couldn't export: {0}</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportConfirm">Importing replaces all your current data (a backup is made first). Continue?</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportDone">Data imported.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportFailed">Couldn't import: {0}</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.None">Something went wrong.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.FileNotFound">The file wasn't found.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.InvalidFile">This isn't a valid Mozakra file.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.UnsupportedSchemaVersion">This file is from a newer Mozakra. Update the app first.</sys:String>
+    <sys:String x:Key="Screens.Settings.ImportError.MissingPlanReference">The file is incomplete: it refers to a plan that isn't in it.</sys:String>
+    <sys:String x:Key="Screens.Settings.Updates">Updates</sys:String>
+    <sys:String x:Key="Screens.Settings.CheckUpdates">Check for updates</sys:String>
+    <sys:String x:Key="Screens.Settings.UpdatesChecking">Checking…</sys:String>
+    <sys:String x:Key="Screens.Settings.UpdateReady">An update was downloaded; it installs when you exit.</sys:String>
+    <sys:String x:Key="Screens.Settings.UpToDate">You're up to date.</sys:String>
+    <sys:String x:Key="Screens.Settings.UpdatesUnavailable">Updates only work in the installed app.</sys:String>
+    <sys:String x:Key="Screens.Settings.About">About</sys:String>
+    <sys:String x:Key="Screens.Settings.VersionFormat">Version {0}</sys:String>
+    <sys:String x:Key="Screens.Settings.GitHub">Source code on GitHub</sys:String>
+    <sys:String x:Key="Screens.Settings.License">Free and open source, MIT license.</sys:String>
+
+    <!-- Onboarding -->
+    <sys:String x:Key="Screens.Onboarding.Title">Welcome to Mozakra</sys:String>
+    <sys:String x:Key="Screens.Onboarding.Welcome">Let's set up Mozakra in a minute</sys:String>
+    <sys:String x:Key="Screens.Onboarding.StepFormat">Step {0} of {1}</sys:String>
+    <sys:String x:Key="Screens.Onboarding.LanguageTitle">Pick your language</sys:String>
+    <sys:String x:Key="Screens.Onboarding.LanguageHint">You can change it later in Settings.</sys:String>
+    <sys:String x:Key="Screens.Onboarding.FreeTimeTitle">Your free time</sys:String>
+    <sys:String x:Key="Screens.Onboarding.FreeTimeHint">Pick what fits you best, then adjust the minutes per day.</sys:String>
+    <sys:String x:Key="Screens.Onboarding.PlanTitle">Your first plan</sys:String>
+    <sys:String x:Key="Screens.Onboarding.PlanHint">A course you're studying or a project you're building. You can skip and add it later.</sys:String>
+    <sys:String x:Key="Screens.Onboarding.SkipPlan">Skip</sys:String>
+    <sys:String x:Key="Screens.Onboarding.Finish">Let's go</sys:String>
+</ResourceDictionary>

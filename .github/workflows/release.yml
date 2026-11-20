@@ -1,0 +1,108 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+  # Keep in sync with the Velopack package version in src/Mozakra.App/Mozakra.App.csproj and build/pack.ps1.
+  VPK_VERSION: 1.2.161
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Version from tag
+        id: version
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          $version = $env:TAG -replace '^v', ''
+          if ($version -notmatch '^\d+\.\d+\.\d+(-[0-9A-Za-z\.-]+)?$') {
+            throw "Tag '$env:TAG' is not v<SemVer> (example: v1.2.3 or v1.3.0-beta.1)."
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ github.workspace }}/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/*.csproj', 'Directory.Build.props') }}
+          restore-keys: nuget-${{ runner.os }}-
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: dotnet test -c Release --no-build
+
+      - name: Publish
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          REPO_URL: https://github.com/${{ github.repository }}
+        run: >
+          dotnet publish src/Mozakra.App -c Release -r win-x64 --self-contained true
+          "-p:Version=$env:VERSION" "-p:RepositoryUrl=$env:REPO_URL" -o publish
+
+      - name: Install vpk
+        run: dotnet tool install -g vpk --version $env:VPK_VERSION
+
+      - name: Download previous release (for delta updates)
+        env:
+          REPO_URL: https://github.com/${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: vpk download github --repoUrl $env:REPO_URL --token $env:GH_TOKEN -o releases
+
+      - name: Pack
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: >
+          vpk pack -u Mozakra -v $env:VERSION -r win-x64 -p publish -e Mozakra.exe
+          --packTitle "Mozakra" --packAuthors "Nadeem Ibrahim"
+          --icon src/Mozakra.App/Assets/mozakra.ico -o releases
+
+      - name: Upload GitHub release
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+          REPO_URL: https://github.com/${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          vpk upload github --repoUrl $env:REPO_URL --publish
+          --releaseName "Mozakra $env:VERSION" --tag "v$env:VERSION"
+          --token $env:GH_TOKEN -o releases
+
+      - name: Add generated release notes
+        env:
+          TAG: ${{ github.ref_name }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $notes = gh api "repos/${{ github.repository }}/releases/generate-notes" -f "tag_name=$env:TAG" --jq .body
+          if ($LASTEXITCODE -ne 0) { throw "Could not generate release notes." }
+          Set-Content -Path release-notes.md -Value $notes -Encoding utf8
+          gh release edit $env:TAG --repo "${{ github.repository }}" --notes-file release-notes.md
+          if ($LASTEXITCODE -ne 0) { throw "Could not update the release notes." }
