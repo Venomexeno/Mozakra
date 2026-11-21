@@ -23,6 +23,14 @@
 ---
 
 <p align="center">
+  <a href="assets/video/mozakra-promo.mp4">
+    <img src="assets/video/preview.gif" width="300" alt="Mozakra in 30 seconds (video, in Arabic)">
+  </a>
+  <br>
+  <sub>🎬 <a href="assets/video/mozakra-promo.mp4">Watch the 30-second video with sound</a> · <a href="assets/video/mozakra-promo.mp4">شوف الفيديو بالصوت</a></sub>
+</p>
+
+<p align="center">
   <img src="assets/screenshots/note-en.png" width="300" alt="The note in English">
   &nbsp;&nbsp;
   <img src="assets/screenshots/note-ar.png" width="300" alt="The note in Arabic">
@@ -184,6 +192,8 @@ Bug reports, translations and pull requests are welcome.
 البرنامج مجاني ومفتوح المصدر، معمول لـ **اللي بيتعلموا لوحدهم**: اللي بيذاكروا كورسات فيديو
 وبيعملوا مشاريع جانبية جنب الشغل أو الكلية. بدل ما تخطط كل يوم بنفسك، البرنامج بيبص على
 مواعيدك ووقتك الفاضي ويجاوب على سؤال واحد: *أعمل إيه النهارده؟*
+
+🎬 [شوف فيديو تعريفي في 30 ثانية](assets/video/mozakra-promo.mp4)
 
 ### المميزات
 
